@@ -71,9 +71,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Welcome to Loan Management System</h1>
 
 	<div id="body">
-           Welcome to Loan Management System 
-           <br/>
-           <a href="<?php echo base_url();?>user/login">Login</a> | <a href="<?php echo base_url();?>user/register">Registration</a>
+            <?php echo $msg; ?>
+            <form name="registration" method="post" id="registration" >
+                <label>First Name:</label><input type="text" name="first_name"/><br/>
+                <label>Last Name:</label><input type="text" name="last_name"/><br/>
+                <label>Email:</label><input type="text" name="email"/><br/>
+                <label>Password:</label><input type="password" name="password"/><br/>
+                <label>Mobile:</label><input type="text" name="mobile"/><br/>
+                <input type="submit" name="submit" id="submit" value="Register"/>
+            </form>           
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
