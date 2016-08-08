@@ -56,7 +56,6 @@ class Users extends CI_Model{
     }
     
     function getUserDetails($data){
-        $this->db->set($data);
         $query = $this->db->query("select * from users where username='".$data['username']."' or email='".$data['email']."'");
         $result = $query->result();
         if(!empty ($result[0])){
