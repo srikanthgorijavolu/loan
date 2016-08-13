@@ -71,13 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Welcome to Loan Management System</h1>
 
 	<div id="body">
-            <form name="search_form" method="post" id="search_form" action="<?php echo base_url();?>welcome/search" >
-                <label>Search Keyword:</label><input type="text" name="search"/><b/>
-                <input type="submit" name="submit" id="submit" value="Search"/>
-            </form>
-           Welcome to Loan Management System 
-           <br/>
-           <a href="<?php echo base_url();?>user/login">Login</a> | <a href="<?php echo base_url();?>user/register">Registration</a>
+                <a href="<?php echo base_url();?>user/login">Click here</a>to login           
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

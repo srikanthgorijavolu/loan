@@ -74,10 +74,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <form name="search_form" method="post" id="search_form" action="<?php echo base_url();?>welcome/search" >
                 <label>Search Keyword:</label><input type="text" name="search"/><b/>
                 <input type="submit" name="submit" id="submit" value="Search"/>
-            </form>
-           Welcome to Loan Management System 
-           <br/>
-           <a href="<?php echo base_url();?>user/login">Login</a> | <a href="<?php echo base_url();?>user/register">Registration</a>
+            </form>  
+            <a href="<?php echo base_url();?>user/register">Registration</a>
+            <br/>
+        <div id="search_results">            
+            <?php foreach ($data as $vendor) { ?>
+            <div>Vendor:<a href="<?php echo base_url();?>company/<?php echo $vendor->page_name;?>"><?php echo $vendor->company_name;?><br/>
+              Website: <?php echo $vendor->website_url;?>     
+            </div>
+            <?php } ?>
+            
+            
+	</div>    
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

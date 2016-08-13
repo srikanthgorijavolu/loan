@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Company extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -26,19 +26,13 @@ class Welcome extends CI_Controller {
         public function __construct() {
             parent::__construct();
         }
-
-
-        public function search()
-        {
-            $search_value = $this->input->post('search');
-            $data = array('data'=>'','msg'=>'','status'=>'');
-            if(!empty ($search_value)){
-                $query_data = array('company_name'=>$search_value);
-                $this->load->model('vendors');
-                $result = $this->vendors->getVendors($query_data);
-                $data = array('data'=>$result,'msg'=>'','status'=>'');
-                
-            }
-            $this->load->view('search',$data);
-	}
+        
+        public function detail() {            
+            $this->load->helper('url');
+            $url_data['page_name'] = $this->uri->segment(2);
+            $this->load->model('vendors');
+            $result = $this->vendors->getVendorDetailsByPagename($url_data);
+            $data = array('data'=>$result);
+            $this->load->view('vendor/detail',$data);
+        }
 }

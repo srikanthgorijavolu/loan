@@ -70,13 +70,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="container">
 	<h1>Welcome to Loan Management System</h1>
 
-	<div id="body">
-            <form name="search_form" method="post" id="search_form" action="<?php echo base_url();?>welcome/search" >
-                <label>Search Keyword:</label><input type="text" name="search"/><b/>
-                <input type="submit" name="submit" id="submit" value="Search"/>
-            </form>
+	<div id="body">            
            Welcome to Loan Management System 
            <br/>
+           <div>Vendor:<a href="<?php echo base_url();?>company/<?php echo $data->page_name;?>"><?php echo $data->company_name;?><br/>
+              Website: <?php echo $data->website_url;?></div>
            <a href="<?php echo base_url();?>user/login">Login</a> | <a href="<?php echo base_url();?>user/register">Registration</a>
 	</div>
 
