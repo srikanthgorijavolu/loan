@@ -77,6 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <label>Last Name:</label><input type="text" name="last_name"/><br/>
                 <label>Email:</label><input type="text" name="email"/><br/>
                 <label>Password:</label><input type="password" name="password"/><br/>
+                <label>Confirm Password:</label><input type="password" name="cpassword"/><br/>
                 <label>Mobile:</label><input type="text" name="mobile"/><br/>
                 <input type="submit" name="submit" id="submit" value="Register"/>
             </form>           

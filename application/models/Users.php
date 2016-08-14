@@ -23,9 +23,7 @@ class Users extends CI_Model{
     }
     
     function Authenticate($data){
-        $this->db->where('username',$data['username']);
-        print_r($data);
-        $query = $this->db->get_where('users',array('username'=>$data['username']),0,1);
+        $query = $this->db->query("select * from users where username='".$data['username']."' or email='".$data['username']."'");
         $result = $query->result();
         foreach ($result as $row){
             if($row->password == md5($data['password'])){

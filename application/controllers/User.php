@@ -34,12 +34,27 @@ class User extends CI_Controller {
             }
             $data = array('msg'=>'','status'=>'','data'=>'');
             if($this->input->post('username') && $this->input->post('password')){
+                $this->load->model('users');
+                $queryData;
+                $queryData['username'] = $this->input->post('username');
+                $queryData['password'] = $this->input->post('password');
+                $returnValue = $this->users->Authenticate($queryData);
+                if($returnValue){
+                    if($returnValue->status==1){
+                        @session_start();
+                        $_SESSION['user'] = $returnValue;
+                        redirect('user/dashboard');
+                    }else{
+                        $data = array('msg'=>'Your account is blocked, please contact our admin','status'=>'','data'=>'');
+                    }
+                }else{
+                    $data = array('msg'=>'Please enter valid email and password.','status'=>'','data'=>'');
+                }
                 if($this->input->post('username')=='admin' && $this->input->post('password')=='test@123'){
-                    $_SESSION['user'] = array('username'=>$this->input->post('username'),'password'=>$this->input->post('password'));
-                    redirect('user/dashboard');
+                    
                 }
             }
-            $this->load->view('user/login');
+            $this->load->view('user/login',$data);
         }
         
         public function dashboard() {
@@ -63,6 +78,11 @@ class User extends CI_Controller {
             }
             $data = array('msg'=>'','status'=>'','data'=>'');
             if($this->input->post('email') && $this->input->post('password')){
+                if($this->input->post('password') != $this->input->post('cpassword')){
+                    $data = array('msg'=>'Password and Confirm Password are not matched','status'=>'success','data'=>'');
+                    $this->load->view('user/registration',$data);
+                    return;
+                }
                 $this->load->model('users');
                 $postData['username'] = $this->input->post('email');
                 $postData['password'] = md5($this->input->post('password'));
